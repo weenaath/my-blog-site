@@ -1,15 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import BlogPost from "./pages/BlogPost";
-
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/post/:id" element={<BlogPost />} />
-      </Routes>
-    </Router>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <h1 className="text-4xl font-bold text-blue-600">
+        Hello Tailwind with CRA 🚀
+      </h1>
+    </div>
   );
 }
 
