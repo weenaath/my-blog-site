@@ -51,7 +51,13 @@ function BlogPost() {
   return (
     <div>
       <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <p className="text-gray-700">{post.content}</p>
+      <p className="text-gray-700 mb-6">{post.content}</p>
+      <Link
+        to="/blog"
+        className="text-blue-500 hover:underline font-medium"
+      >
+        ← Back to Blog
+      </Link>
     </div>
   );
 }
