@@ -4,10 +4,27 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
 import posts from "./data/posts";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "./firebase"; // adjust path if needed
 
 function Home() {
   const [text, setText] = useState("");
   const fullText = "Welcome to My Blog!";
+
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    try {
+      await addDoc(collection(db, "subscribers"), { email });
+      setMessage("🎉 Thanks for subscribing!");
+      setEmail("");
+    } catch (error) {
+      console.error("Error adding subscriber: ", error);
+      setMessage("❌ Something went wrong. Please try again.");
+    }
+  };
 
   const featuredPosts = posts.filter((post) => post.featured);
 
@@ -73,28 +90,29 @@ function Home() {
         </p>
 
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            alert("Thanks for subscribing! 🎉");
-          }}
+          onSubmit={handleSubscribe}
           className="flex flex-col sm:flex-row items-center gap-4"
         >
           <input
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             className="w-full flex-1 px-4 py-3 border rounded-lg focus:outline-none 
-                      focus:ring-2 focus:ring-blue-500"
+                       focus:ring-2 focus:ring-blue-500"
             required
           />
           <button
             type="submit"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 
-                      transition transform hover:scale-105 hover:shadow-lg duration-300"
+                       transition transform hover:scale-105 hover:shadow-lg duration-300"
           >
             Subscribe
           </button>
         </form>
-        </div>
+
+        {message && <p className="mt-4 text-green-600">{message}</p>}
+      </div>
 
     </div>
   );
@@ -109,22 +127,18 @@ function Blog() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6 text-center text-blue-600">Blog Posts</h1>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <h1 className="text-3xl font-bold text-center mb-8">Blog Posts</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
           <div
             key={post.id}
-            className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1"
+            className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300"
           >
-            <h2 className="text-xl font-bold mb-2">
-              <Link to={`/blog/${post.id}`} className="text-blue-600 hover:underline">
-                {post.title}
-              </Link>
-            </h2>
+            <h2 className="text-xl font-bold mb-2">{post.title}</h2>
             <p className="text-gray-600 mb-4">{post.summary}</p>
             <Link
               to={`/blog/${post.id}`}
-              className="text-sm text-blue-500 hover:underline font-medium"
+              className="text-blue-500 font-medium hover:underline"
             >
               Read More →
             </Link>
@@ -134,6 +148,8 @@ function Blog() {
     </div>
   );
 }
+
+export { Blog };
 
 
 function About() {

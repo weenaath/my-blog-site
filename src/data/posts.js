@@ -5,6 +5,7 @@ const posts = [
     title: "Getting Started with React",
     summary: "Learn the basics of building apps with React.",
     content: "This is the full content of the React blog post...",
+    image: "https://share.google/images/bpNfV8xTrR5u7MCTu",
     category: "React",
     featured: true,
   },
