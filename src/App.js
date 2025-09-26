@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function Home() {
   return <h1 className="text-3xl font-bold text-blue-600">Welcome to My Blog 📝</h1>;
@@ -67,16 +68,19 @@ function BlogPost() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50 p-6">
-        <Navbar /> {/* 🔹 Reusable Navbar */}
+      <div className="min-h-screen bg-gray-50 p-6 flex flex-col">
+        <Navbar /> 
 
-        {/* Page Routes */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-        </Routes>
+        <div className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
+          </Routes>
+        </div>
+
+        <Footer /> {/* 🔹 Footer */}
       </div>
     </Router>
   );
