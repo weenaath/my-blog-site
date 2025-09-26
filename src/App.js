@@ -4,7 +4,22 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 function Home() {
-  return <h1 className="text-3xl font-bold text-blue-600">Welcome to My Blog 📝</h1>;
+  return (
+    <div className="flex flex-col items-center justify-center text-center mt-20">
+      <h1 className="text-5xl font-bold text-blue-600 mb-4">
+        Welcome to My Blog 📝
+      </h1>
+      <p className="text-lg text-gray-700 mb-6 max-w-xl">
+        Discover tips, tutorials, and stories about web development, React, Tailwind CSS, and more!
+      </p>
+      <a
+        href="/blog"
+        className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+      >
+        Explore Blog Posts
+      </a>
+    </div>
+  );
 }
 
 function Blog() {
