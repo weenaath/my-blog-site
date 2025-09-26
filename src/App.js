@@ -5,7 +5,25 @@ function Home() {
 }
 
 function Blog() {
-  return <h1 className="text-2xl font-semibold">Blog Posts</h1>;
+  const posts = [
+    { id: 1, title: "My First Blog Post", content: "This is an intro to my blog journey!" },
+    { id: 2, title: "Learning React", content: "React is awesome and powerful!" },
+    { id: 3, title: "Why I Love Tailwind CSS", content: "It makes styling so much faster." },
+  ];
+
+  return (
+    <div>
+      <h1 className="text-2xl font-semibold mb-4">Blog Posts</h1>
+      <ul className="space-y-4">
+        {posts.map((post) => (
+          <li key={post.id} className="p-4 border rounded-lg shadow bg-white">
+            <h2 className="text-xl font-bold">{post.title}</h2>
+            <p className="text-gray-600">{post.content}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 function About() {
