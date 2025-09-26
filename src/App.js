@@ -62,7 +62,7 @@ function Home() {
 
       {/* Featured Posts Section */}
       <div className="w-full max-w-5xl">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6 text-left">Featured Posts</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-6 mt-10 text-center">Featured Posts</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {featuredPosts.map((post) => (
             <div
