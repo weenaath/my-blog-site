@@ -62,6 +62,40 @@ function Home() {
           ))}
         </div>
       </div>
+
+      {/* Subscribe Section */}
+      <div className="w-full max-w-3xl mt-16 text-center">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          Subscribe to Our Newsletter
+        </h2>
+        <p className="text-gray-600 mb-6">
+          Get the latest blog posts and tutorials delivered straight to your inbox.
+        </p>
+
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            alert("Thanks for subscribing! 🎉");
+          }}
+          className="flex flex-col sm:flex-row items-center gap-4"
+        >
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-full flex-1 px-4 py-3 border rounded-lg focus:outline-none 
+                      focus:ring-2 focus:ring-blue-500"
+            required
+          />
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 
+                      transition transform hover:scale-105 hover:shadow-lg duration-300"
+          >
+            Subscribe
+          </button>
+        </form>
+        </div>
+
     </div>
   );
 }
