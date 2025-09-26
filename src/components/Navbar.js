@@ -1,4 +1,5 @@
 // src/components/Navbar.js
+import { logDOM } from "@testing-library/dom";
 import { Link } from "react-router-dom";
 
 function Navbar() {

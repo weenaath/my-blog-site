@@ -120,9 +120,24 @@ function Home() {
 
 function Blog() {
   const posts = [
-    { id: 1, title: "My First Blog Post", summary: "Intro to my blog journey..." },
-    { id: 2, title: "Learning React", summary: "React is awesome and powerful..." },
-    { id: 3, title: "Why I Love Tailwind CSS", summary: "Styling made easy..." },
+    { 
+      id: 1, 
+      title: "My First Blog Post", 
+      summary: "Intro to my blog journey...", 
+      image: "https://source.unsplash.com/600x400/?writing,blog" 
+    },
+    { 
+      id: 2, 
+      title: "Learning React", 
+      summary: "React is awesome and powerful...", 
+      image: "https://source.unsplash.com/600x400/?reactjs,code" 
+    },
+    { 
+      id: 3, 
+      title: "Why I Love Tailwind CSS", 
+      summary: "Styling made easy...", 
+      image: "https://source.unsplash.com/600x400/?tailwindcss,design" 
+    },
   ];
 
   return (
@@ -132,16 +147,26 @@ function Blog() {
         {posts.map((post) => (
           <div
             key={post.id}
-            className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300"
+            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
           >
-            <h2 className="text-xl font-bold mb-2">{post.title}</h2>
-            <p className="text-gray-600 mb-4">{post.summary}</p>
-            <Link
-              to={`/blog/${post.id}`}
-              className="text-blue-500 font-medium hover:underline"
-            >
-              Read More →
-            </Link>
+            {/* 🔹 Blog Post Image (inside the card) */}
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full h-40 object-cover"
+            />
+
+            {/* 🔹 Text content */}
+            <div className="p-6">
+              <h2 className="text-xl font-bold mb-2">{post.title}</h2>
+              <p className="text-gray-600 mb-4">{post.summary}</p>
+              <Link
+                to={`/blog/${post.id}`}
+                className="text-blue-500 font-medium hover:underline"
+              >
+                Read More →
+              </Link>
+            </div>
           </div>
         ))}
       </div>
