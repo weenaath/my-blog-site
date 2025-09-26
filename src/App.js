@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 
 function Home() {
   return (
-    <div className="flex flex-col items-center justify-center text-center mt-20">
+    <div className="flex flex-col items-center justify-center text-center mt-20 bg-gradient-to-r from-blue-50 to-blue-100 p-10 rounded-lg">
       <h1 className="text-5xl font-bold text-blue-600 mb-4">
         Welcome to My Blog 📝
       </h1>
@@ -24,28 +24,39 @@ function Home() {
 
 function Blog() {
   const posts = [
-    { id: 1, title: "My First Blog Post", content: "This is an intro to my blog journey!" },
-    { id: 2, title: "Learning React", content: "React is awesome and powerful!" },
-    { id: 3, title: "Why I Love Tailwind CSS", content: "It makes styling so much faster." },
+    { id: 1, title: "My First Blog Post", summary: "Intro to my blog journey..." },
+    { id: 2, title: "Learning React", summary: "React is awesome and powerful..." },
+    { id: 3, title: "Why I Love Tailwind CSS", summary: "Styling made easy..." },
   ];
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold mb-4">Blog Posts</h1>
-      <ul className="space-y-4">
+      <h1 className="text-3xl font-bold mb-6 text-center text-blue-600">Blog Posts</h1>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
-          <li key={post.id} className="p-4 border rounded-lg shadow bg-white">
-            <Link to={`/blog/${post.id}`} className="text-xl font-bold text-blue-600 hover:underline">
-            {post.title}
+          <div
+            key={post.id}
+            className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1"
+          >
+            <h2 className="text-xl font-bold mb-2">
+              <Link to={`/blog/${post.id}`} className="text-blue-600 hover:underline">
+                {post.title}
+              </Link>
+            </h2>
+            <p className="text-gray-600 mb-4">{post.summary}</p>
+            <Link
+              to={`/blog/${post.id}`}
+              className="text-sm text-blue-500 hover:underline font-medium"
+            >
+              Read More →
             </Link>
-
-            <p className="text-gray-600">{post.content}</p>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
+
 
 function About() {
   return <h1 className="text-2xl font-semibold">About Me</h1>;
