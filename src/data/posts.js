@@ -6,6 +6,7 @@ const posts = [
     summary: "Learn the basics of building apps with React.",
     content: "This is the full content of the React blog post...",
     category: "React",
+    featured: true,
   },
   {
     id: 2,
@@ -13,6 +14,7 @@ const posts = [
     summary: "A beginner-friendly guide to styling with Tailwind.",
     content: "This is the full content of the Tailwind blog post...",
     category: "CSS",
+    featured: true,
   },
   {
     id: 3,
@@ -20,6 +22,7 @@ const posts = [
     summary: "Some useful advice for starting your web dev journey.",
     content: "This is the full content of the Web Developer blog post...",
     category: "Career",
+    featured: false,
   },
 ];
 

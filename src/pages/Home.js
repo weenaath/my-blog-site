@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import blogPosts from "../data/blogPosts";
 import { useState, useEffect } from "react";
+import posts from "./data/posts";
 
 function Home() {
   const [text, setText] = useState("");
   const fullText = "Welcome to My Blog 📝";
+
+  const featuredPosts = posts.filter((post) => post.featured);
 
   useEffect(() => {
     let i = 0;
@@ -37,6 +40,26 @@ function Home() {
       >
         Explore Blog Posts
       </a>
+
+      {/* Featured Posts Section */}
+      <div className="w-full max-w-5xl">
+        <h2 className="text-3xl font-bold text-gray-800 mb-6 text-left">Featured Posts</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {featuredPosts.map((post) => (
+            <div
+              key={post.id}
+              className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1"
+            >
+              <h3 className="text-2xl font-bold mb-2">
+                <Link to={`/blog/${post.id}`} className="text-blue-600 hover:underline">
+                  {post.title}
+                </Link>
+              </h3>
+              <p className="text-gray-600">{post.summary}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
