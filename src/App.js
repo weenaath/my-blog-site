@@ -124,19 +124,19 @@ function Blog() {
       id: 1, 
       title: "My First Blog Post", 
       summary: "Intro to my blog journey...", 
-      image: "https://source.unsplash.com/600x400/?writing,blog" 
+      image: "https://fastly.picsum.photos/id/5/5000/3334.jpg?hmac=R_jZuyT1jbcfBlpKFxAb0Q3lof9oJ0kREaxsYV3MgCc" 
     },
     { 
       id: 2, 
       title: "Learning React", 
       summary: "React is awesome and powerful...", 
-      image: "https://source.unsplash.com/600x400/?reactjs,code" 
+      image: "https://opensource.fb.com/img/projects/react.jpg" 
     },
     { 
       id: 3, 
       title: "Why I Love Tailwind CSS", 
       summary: "Styling made easy...", 
-      image: "https://source.unsplash.com/600x400/?tailwindcss,design" 
+      image: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fi5vke8fu8g8659hjvv22.jpeg" 
     },
   ];
 
@@ -149,12 +149,14 @@ function Blog() {
             key={post.id}
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
           >
-            {/* 🔹 Blog Post Image (inside the card) */}
-            <img
-              src={post.image}
-              alt={post.title}
-              className="w-full h-40 object-cover"
-            />
+            {/* 🔹 Image with hover zoom */}
+            <div className="overflow-hidden">
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-40 object-cover transform transition-transform duration-500 hover:scale-110"
+              />
+            </div>
 
             {/* 🔹 Text content */}
             <div className="p-6">
@@ -173,6 +175,7 @@ function Blog() {
     </div>
   );
 }
+
 
 export { Blog };
 
