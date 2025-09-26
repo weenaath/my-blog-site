@@ -181,8 +181,40 @@ export { Blog };
 
 
 function About() {
-  return <h1 className="text-2xl font-semibold">About Me</h1>;
+  return (
+    <div className="max-w-5xl mx-auto py-16 px-6 text-center">
+      {/* Profile Image */}
+      <img
+        src="https://media.licdn.com/dms/image/v2/D5603AQGq-cjG83eYWQ/profile-displayphoto-crop_800_800/B56ZhPKSbqHQAM-/0/1753674756944?e=1761782400&v=beta&t=CHI4YQEHJi-rvkSx9zQ3IEsMI8v2fk6pIpq_uhpfwFs"
+        alt="Profile"
+        className="w-40 h-40 mx-auto rounded-full shadow-lg mb-6 hover:scale-105 transition duration-300"
+      />
+
+      {/* Heading */}
+      <h1 className="text-4xl font-bold text-gray-800 mb-4">About Me</h1>
+
+      {/* Subtext */}
+      <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto mb-10">
+        Hello! I’m Sakindu, an Information Systems undergraduate at University of Sri Jayewardenepura, who is passionate about cybersecurity and ethical hacking. 
+        My mission is to share knowledge and connect with people who have common interests.
+      </p>
+
+      {/* Call to Action */}
+      <div className="mt-12">
+        <a
+          href="mailto:weenaath@gmail.com"
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 
+                     transform-gpu transition-transform duration-300 ease-out hover:scale-110 
+                     hover:shadow-2xl"
+        >
+          Get in Touch
+        </a>
+
+      </div>
+    </div>
+  );
 }
+
 
 function BlogPost() {
   const { id } = useParams();
