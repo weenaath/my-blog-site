@@ -5,7 +5,7 @@ import posts from "./data/posts";
 
 function Home() {
   const [text, setText] = useState("");
-  const fullText = "Welcome to My Blog 📝";
+  const fullText = "Welcome to My Blog!";
 
   const featuredPosts = posts.filter((post) => post.featured);
 
@@ -29,7 +29,7 @@ function Home() {
       
       {/* Subtext */}
       <p className="text-lg text-gray-700 mb-6 max-w-xl">
-        Discover tips, tutorials, and stories about web development, React, Tailwind CSS, and more!
+        Discover tips, tutorials, and stories about latest technologies!
       </p>
       
       {/* Animated Button */}
