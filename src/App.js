@@ -134,9 +134,9 @@ function Blog() {
     },
     { 
       id: 3, 
-      title: "Why I Love Tailwind CSS", 
-      summary: "Styling made easy...", 
-      image: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fi5vke8fu8g8659hjvv22.jpeg" 
+      title: "The Future of Cybersecurity: Guarding Tomorrow’s Digital World", 
+      summary: "The future of cybersecurity will be defined by smarter threats and smarter defenses, driven by AI, quantum computing, and resilience.", 
+      image: "https://research.somaiya.edu/upload_file/images20/shutterstock_599391605.jpg" 
     },
   ];
 
@@ -250,9 +250,24 @@ function BlogPost() {
 
     {
       id: 3,
-      title: "Why I Love Tailwind CSS",
+      title: "The Future of Cybersecurity: Guarding Tomorrow’s Digital World",
       content: [
-        "It makes styling so much faster."
+        { type: "image", src: "https://www.cloudavize.com/wp-content/uploads/2021/10/bigstock-Data-Protection-Cyber-Security-278238466-scaled.jpg", alt: "Cybersecurity" },
+        "In today’s hyper-connected world, cybersecurity has become more than just a technical concern—it’s the backbone of digital trust. From personal devices and social media to global financial systems and government infrastructure, everything is interconnected, and the threats are evolving faster than ever before.",
+        
+        "The future of cybersecurity will be defined by the rise of artificial intelligence (AI) and machine learning. These technologies will not only help organizations detect anomalies in real time but will also be used by cybercriminals to launch smarter, more adaptive attacks. The next cyber battlefield won’t just be firewalls and passwords—it will be algorithms fighting algorithms.",
+        
+        "Quantum computing is another game-changer on the horizon. While quantum power promises breakthroughs in medicine, climate modeling, and AI, it also poses a serious threat to traditional encryption methods. Experts believe that when quantum computers reach full capability, they could break widely used security protocols like RSA in seconds. This means the race for quantum-resistant encryption has already begun.",
+        
+        "The Internet of Things (IoT) will add billions of new devices to the digital ecosystem—everything from smart homes and self-driving cars to industrial robots. Each connected device is a potential entry point for hackers. Securing these networks will require new approaches, such as zero-trust architectures and decentralized security models.",
+        
+        "Human factors, however, will remain the weakest link. Phishing, social engineering, and insider threats continue to bypass even the most advanced defenses. In the future, organizations will invest heavily in cybersecurity awareness training and adaptive authentication systems that respond dynamically to user behavior.",
+        
+        "On a larger scale, cybersecurity will increasingly intersect with geopolitics. Nation-states are already engaging in cyber espionage, digital sabotage, and information warfare. Tomorrow’s conflicts may not just be fought with soldiers and tanks but with malware, deepfakes, and AI-driven propaganda.",
+        
+        "But it’s not all doom and gloom. The future of cybersecurity also holds immense opportunities. Advances in blockchain technology could enhance data integrity and transparency, biometric authentication may replace passwords entirely, and AI-powered defense systems will get smarter at detecting and preventing threats before they cause damage.",
+        
+        "Ultimately, the future of cybersecurity is about resilience. It’s about building systems that can withstand attacks, adapt quickly, and recover without catastrophic damage. As technology advances, so too must our defenses—because in the digital age, security is not just an option, it’s survival."
       ],
     },
   ];
