@@ -39,9 +39,9 @@ function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center text-center mt-20 p-10 rounded-lg
-                    bg-gradient-to-r from-purple-200 via-pink-200 to-yellow-200 
-                    bg-[length:200%_200%] animate-gradient-x">
+    <div className="flex flex-col items-center justify-center text-center mt-8 md:mt-8 lg:mt-8 p-10 rounded-lg
+                bg-gradient-to-r from-purple-200 via-pink-200 to-yellow-200 
+                bg-[length:200%_200%] animate-gradient-x">
       
       {/* Typing Effect Heading */}
       <h1 className="text-5xl font-bold text-blue-600 mb-4">{text}</h1>
@@ -62,9 +62,9 @@ function Home() {
 
       {/* Featured Posts Section */}
       <div className="w-full max-w-5xl">
-  <h2 className="text-3xl font-bold text-gray-800 mb-6 mt-10 text-center">Featured Posts</h2>
-  <div className="grid md:grid-cols-2 gap-6">
-    {featuredPosts.map((post) => (
+        <h2 className="text-3xl font-bold text-gray-800 mb-6 mt-10 text-center">Featured Posts</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+        {featuredPosts.map((post) => (
       <div
         key={post.id}
         className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1"
