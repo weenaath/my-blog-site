@@ -48,7 +48,7 @@ function Home() {
       
       {/* Subtext */}
       <p className="text-lg text-gray-700 mb-6 max-w-xl">
-        Discover tips, tutorials, and stories about latest technologies!
+        Discover tips, tutorials, and stories about latest trends in technology!
       </p>
       
       {/* Animated Button */}
