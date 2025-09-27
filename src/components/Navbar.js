@@ -4,20 +4,34 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="bg-white shadow-md rounded-lg mb-8 sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo / Title */}
-          <Link to="/" className="text-2xl font-bold text-blue-600">
-            My Blog
-          </Link>
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="container mx-auto flex items-center justify-between p-4">
+        
+        {/* Logo */}
+        <div className="text-2xl font-bold text-blue-600">
+          <Link to="/">Sakindu's Blog</Link>
+        </div>
 
-          {/* Navigation Links */}
-          <div className="flex space-x-6 text-gray-700 font-medium">
-            <Link to="/" className="hover:text-blue-500 transition">Home</Link>
-            <Link to="/blog" className="hover:text-blue-500 transition">Blog</Link>
-            <Link to="/about" className="hover:text-blue-500 transition">About</Link>
-          </div>
+        {/* Navigation Links */}
+        <div className="flex space-x-8 text-lg font-medium text-gray-700">
+          <Link 
+            to="/" 
+            className="hover:text-blue-600 transition-colors duration-300"
+          >
+            Home
+          </Link>
+          <Link 
+            to="/blog" 
+            className="hover:text-blue-600 transition-colors duration-300"
+          >
+            Blog
+          </Link>
+          <Link 
+            to="/about" 
+            className="hover:text-blue-600 transition-colors duration-300"
+          >
+            About
+          </Link>
         </div>
       </div>
     </nav>
