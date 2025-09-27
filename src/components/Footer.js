@@ -3,21 +3,16 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-6 mt-10">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
-        
-        {/* Left - Copyright */}
-        <p className="text-sm mb-4 md:mb-0">
-          © {new Date().getFullYear()} Sakindu's Blog. All rights reserved.
-        </p>
-        
-        {/* Right - Social Links */}
-        <div className="flex space-x-6 text-xl">
+    <footer className="bg-gray-800 text-white py-8">
+      <div className="flex flex-col items-center space-y-4">
+
+        {/* Social Icons */}
+        <div className="flex space-x-6 text-2xl">
           <a 
             href="https://github.com/weenaath" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="hover:text-blue-400 transition-transform transform hover:scale-125"
+            className="hover:text-blue-400 transform hover:scale-125 transition duration-300"
           >
             <FaGithub />
           </a>
@@ -25,7 +20,7 @@ function Footer() {
             href="https://linkedin.com/in/sakindu" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="hover:text-blue-400 transition-transform transform hover:scale-125"
+            className="hover:text-blue-400 transform hover:scale-125 transition duration-300"
           >
             <FaLinkedin />
           </a>
@@ -33,11 +28,17 @@ function Footer() {
             href="https://twitter.com/weenaath" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="hover:text-blue-400 transition-transform transform hover:scale-125"
+            className="hover:text-blue-400 transform hover:scale-125 transition duration-300"
           >
             <FaTwitter />
           </a>
         </div>
+
+        {/* Copyright */}
+        <p className="text-sm text-gray-400">
+          © {new Date().getFullYear()} Sakindu's Blog. All rights reserved.
+        </p>
+
       </div>
     </footer>
   );
