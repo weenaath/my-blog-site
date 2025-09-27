@@ -14,15 +14,34 @@ const posts = [
     category: "AI & Machine Learning",
     featured: true,
   },
+
   {
-    id: 2,
-    title: "Why Tailwind CSS is Awesome",
-    summary: "A beginner-friendly guide to styling with Tailwind.",
-    content: "This is the full content of the Tailwind blog post...",
-    category: "CSS",
-    featured: true,
-  },
-  {
+  id: 2,
+  title: "The Future in Your Hands: iPhone 17 Series",
+  summary: "Apple’s iPhone 17 series is here with groundbreaking features and stunning design upgrades.",
+  content: [
+    "Apple has officially unveiled the iPhone 17 series, and it’s nothing short of revolutionary. Packed with cutting-edge technology, breathtaking design, and unmatched performance, this year’s lineup has set a new benchmark for smartphones.",
+    
+    "The first thing that stands out is the all-new edge-to-edge **Infinity Display**, offering even slimmer bezels and brighter colors. Apple claims it’s their most advanced OLED panel yet, making photos, videos, and games look more immersive than ever.",
+    
+    "Under the hood, the iPhone 17 series is powered by the **A19 Bionic chip**, delivering lightning-fast performance and improved efficiency. Combined with iOS 19, multitasking and AI-driven features feel smoother and smarter.",
+    
+    "Photography lovers are in for a treat — the **quad-lens camera system** introduces an all-new ‘Cinematic Zoom’ and improved low-light photography. Night mode is now crystal clear, making the iPhone 17 Pro Max one of the best smartphone cameras in the world.",
+    
+    "Apple also focused on sustainability, introducing the first iPhone crafted with 100% recycled titanium. The new models are lighter, more durable, and eco-friendly.",
+    
+    "Battery life has been significantly boosted, with up to **2 extra hours** on the Pro models. And yes — the rumors were true — Apple has finally introduced **MagSafe 2.0**, offering faster wireless charging and new accessories.",
+    
+    "The iPhone 17 series is available in stunning colors like Midnight Black, Aurora Blue, and a brand-new Rose Titanium finish. Prices start at $999 for the base model, with the iPhone 17 Pro Max reaching $1,399.",
+    
+    "With powerful performance, incredible cameras, and an eco-conscious design, the iPhone 17 series proves once again why Apple remains the leader in smartphone innovation."
+  ],
+  image: "https://www.apple.com/newsroom/images/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/article/Apple-iPhone-17-Pro-cosmic-orange-250909_inline.jpg.large_2x.jpg",
+  category: "Technology",
+  featured: true,
+},
+  
+{
     id: 3,
     title: "Tips for Becoming a Web Developer",
     summary: "Some useful advice for starting your web dev journey.",
