@@ -224,6 +224,7 @@ function BlogPost() {
       id: 1,
       title: "The Clockwork Orchard: How AI and Machine Learning Turn Data into Decisions",
       content: [
+        { type: "image", src: "https://miro.medium.com/v2/resize:fit:4800/format:webp/0*pV5sn0PAv1PQe4r5.png", alt: "AI and Machine Learning" },
         "Imagine AI and machine learning as an orchard where data is the soil, algorithms are the tools, and predictions are the fruits we harvest. At its core, artificial intelligence is the broad pursuit of making machines act in ways we’d call “intelligent,” from recognizing a face to decoding natural language. Machine learning narrows that down to systems that learn patterns from examples instead of rigid instructions, while deep learning builds layered neural networks that handle especially complex tasks like image recognition or conversation.",
         "The recent bloom in this field comes from an abundance of data, powerful computing hardware, and breakthroughs like transformers, which power today’s large language models. These systems are showing up everywhere: in hospitals that use AI to flag anomalies in scans, in banking systems that sniff out fraud, in e-commerce platforms that recommend products, and in everyday digital assistants that help us write, code, or organize.",
         "But clever fruit isn’t enough—you also need irrigation and care, which is where concepts like MLOps enter the picture. This means building pipelines for clean data, testing models thoroughly, deploying them responsibly, and monitoring their long-term health. Alongside engineering rigor sits an ethical duty: ensuring models are fair, private, secure, sustainable, and transparent. Without this, the orchard risks bearing bad fruit.",
@@ -235,6 +236,7 @@ function BlogPost() {
       id: 2,
       title: "The Future in Your Hands: iPhone 17 Series",
       content: [
+        { type: "image", src: "https://www.apple.com/v/iphone-17-pro/b/images/overview/highlights/highlights_design_endframe__flnga0hibmeu_large.jpg", alt: "iPhone 17 Pro Series" },
         "Apple has officially unveiled the iPhone 17 series, and it’s nothing short of revolutionary. Packed with cutting-edge technology, breathtaking design, and unmatched performance, this year’s lineup has set a new benchmark for smartphones.",
         "The first thing that stands out is the all-new edge-to-edge **Infinity Display**, offering even slimmer bezels and brighter colors. Apple claims it’s their most advanced OLED panel yet, making photos, videos, and games look more immersive than ever.",
         "Under the hood, the iPhone 17 series is powered by the **A19 Bionic chip**, delivering lightning-fast performance and improved efficiency. Combined with iOS 19, multitasking and AI-driven features feel smoother and smarter.",
@@ -255,6 +257,7 @@ function BlogPost() {
     },
   ];
 
+
   const post = posts.find((p) => p.id.toString() === id);
 
   if (!post) {
@@ -262,18 +265,44 @@ function BlogPost() {
   }
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      {post.content.map((para, index) => (
-        <p key={index} className="text-gray-700 mb-4">{para}</p>
-    ))}
+    <div className="px-6 py-10 bg-gray-50 min-h-screen">
+      <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-2xl p-8">
+        {/* Title */}
+        <h1 className="text-4xl font-extrabold text-gray-900 mb-6 text-center">
+          {post.title}
+        </h1>
 
-      <Link
-        to="/blog"
-        className="text-blue-500 hover:underline font-medium"
-      >
-        ← Back to Blog
-      </Link>
+        {/* Content */}
+        <div className="space-y-6 text-justify leading-relaxed text-gray-700">
+            {post.content.map((item, index) => {
+              if (typeof item === "string") {
+                return <p key={index}>{item}</p>;
+              } else if (item.type === "image") {
+                return (
+                  <div key={index} className="my-6">
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="rounded-lg shadow-md mx-auto"
+                    />
+                  </div>
+                );  
+              }
+              return null;
+            })}
+        </div>
+
+
+        {/* Back Button */}
+        <div className="mt-8 text-center">
+          <Link
+            to="/blog"
+            className="inline-block px-6 py-2 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 transition"
+          >
+            ← Back to Blog
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
