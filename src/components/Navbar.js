@@ -9,7 +9,7 @@ function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo / Title */}
           <Link to="/" className="text-2xl font-bold text-blue-600">
-            Sakindu's Blog
+            My Blog
           </Link>
 
           {/* Navigation Links */}

@@ -9,7 +9,7 @@ function Footer() {
         {/* Social Icons */}
         <div className="flex space-x-6 text-2xl">
           <a 
-            href="https://github.com/weenaath" 
+            href="https://github.com/your-username" 
             target="_blank" 
             rel="noopener noreferrer"
             className="hover:text-blue-400 transform hover:scale-125 transition duration-300"
@@ -17,7 +17,7 @@ function Footer() {
             <FaGithub />
           </a>
           <a 
-            href="https://linkedin.com/in/sakindu" 
+            href="https://linkedin.com/in/your-username" 
             target="_blank" 
             rel="noopener noreferrer"
             className="hover:text-blue-400 transform hover:scale-125 transition duration-300"
@@ -25,7 +25,7 @@ function Footer() {
             <FaLinkedin />
           </a>
           <a 
-            href="https://twitter.com/weenaath" 
+            href="https://twitter.com/your-username" 
             target="_blank" 
             rel="noopener noreferrer"
             className="hover:text-blue-400 transform hover:scale-125 transition duration-300"
