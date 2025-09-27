@@ -248,10 +248,16 @@ function BlogPost() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50 p-6 flex flex-col">
-        <Navbar /> 
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        {/* Navigation */}
+        <nav className="mb-6 flex gap-6 text-lg font-medium text-gray-700 p-6 bg-white shadow">
+          <Link to="/">Home</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="/about">About</Link>
+        </nav>
 
-        <div className="flex-1">
+        {/* Page Routes */}
+        <div className="flex-grow p-6">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
@@ -260,7 +266,8 @@ function App() {
           </Routes>
         </div>
 
-        <Footer /> {/* 🔹 Footer */}
+        {/* Footer */}
+        <Footer />
       </div>
     </Router>
   );
