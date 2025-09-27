@@ -62,23 +62,30 @@ function Home() {
 
       {/* Featured Posts Section */}
       <div className="w-full max-w-5xl">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6 mt-10 text-center">Featured Posts</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          {featuredPosts.map((post) => (
-            <div
-              key={post.id}
-              className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1"
-            >
-              <h3 className="text-2xl font-bold mb-2">
-                <Link to={`/blog/${post.id}`} className="text-blue-600 hover:underline">
-                  {post.title}
-                </Link>
-              </h3>
-              <p className="text-gray-600">{post.summary}</p>
-            </div>
-          ))}
+  <h2 className="text-3xl font-bold text-gray-800 mb-6 mt-10 text-center">Featured Posts</h2>
+  <div className="grid md:grid-cols-2 gap-6">
+    {featuredPosts.map((post) => (
+      <div
+        key={post.id}
+        className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1"
+      >
+        {/* Title Section */}
+        <div className="mb-4 border-b pb-2">
+          <h3 className="text-2xl font-bold">
+            <Link to={`/blog/${post.id}`} className="text-blue-600 hover:underline">
+              {post.title}
+            </Link>
+          </h3>
+        </div>
+
+        {/* Summary Section */}
+        <div>
+          <p className="text-gray-600">{post.summary}</p>
         </div>
       </div>
+    ))}
+  </div>
+</div>
 
       {/* Subscribe Section */}
       <div className="w-full max-w-3xl mt-16 text-center">
