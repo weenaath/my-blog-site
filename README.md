@@ -31,7 +31,7 @@ Follow these steps to run locally:
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/your-repo.git  
+git clone https://github.com/weenaath/my-blog-site  
 
 # Navigate into project folder
 cd your-repo  
