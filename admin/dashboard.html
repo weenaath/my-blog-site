@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+</head>
+<body>
+
+  <h1>Write New Blog Post</h1>
+
+  <input id="title" placeholder="Title"><br>
+  <textarea id="content" placeholder="Blog content"></textarea><br>
+
+  <button id="publishBtn">Publish</button>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = { /* your config */ };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    const db = getFirestore();
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html"; // redirect if not logged in
+      }
+    });
+
+    document.getElementById("publishBtn").onclick = async () => {
+      const title = document.getElementById("title").value;
+      const content = document.getElementById("content").value;
+
+      const id = Date.now().toString(); // unique doc id
+
+      await setDoc(doc(db, "posts", id), {
+        title,
+        content,
+        createdAt: new Date()
+      });
+
+      alert("Post Published!");
+    };
+  </script>
+
+</body>
+</html>
