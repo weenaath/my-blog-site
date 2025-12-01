@@ -193,11 +193,9 @@ function About() {
   return (
     <div className="max-w-5xl mx-auto py-16 px-6 text-center">
       {/* Profile Image */}
-      <img
-        src="https://media.licdn.com/dms/image/v2/D5603AQGq-cjG83eYWQ/profile-displayphoto-crop_800_800/B56ZhPKSbqHQAM-/0/1753674756944?e=1761782400&v=beta&t=CHI4YQEHJi-rvkSx9zQ3IEsMI8v2fk6pIpq_uhpfwFs"
-        alt="Profile"
-        className="w-40 h-40 mx-auto rounded-full shadow-lg mb-6 hover:scale-105 transition duration-300"
-      />
+      <img src="/myphoto.jpg" 
+      alt="Profile" 
+      className="w-40 h-40 mx-auto rounded-full shadow-lg mb-6 hover:scale-105 transition duration-300" />
 
       {/* Heading */}
       <h1 className="text-4xl font-bold text-gray-800 mb-4">About Me</h1>
