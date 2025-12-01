@@ -19,7 +19,7 @@ function Admin() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 flex justify-center">
+    <div className="min-h-screen bg-blue-100 p-6 flex justify-center">
       <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg p-8 border border-gray-200">
         
         {/* Header */}
