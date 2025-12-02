@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
 import posts from "./data/posts";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "./firebase"; // adjust path if needed
 import Admin from "./pages/Admin";
 
