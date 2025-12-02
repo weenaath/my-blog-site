@@ -1,48 +1,52 @@
 import React, { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 function Admin() {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    setLoading(true);
 
-  try {
-    await addDoc(collection(db, "posts"), {
-      title,
-      summary,
-      content,
-      image,
-      createdAt: new Date(),
-    });
+    try {
+      await addDoc(collection(db, "posts"), {
+        title,
+        summary,
+        content,
+        image: image || null,
+        createdAt: serverTimestamp(),
+      });
 
-    alert("Blog added successfully!");
+      alert("🎉 Blog successfully published!");
 
-    setTitle("");
-    setSummary("");
-    setContent("");
-    setImage("");
+      // Clear form
+      setTitle("");
+      setSummary("");
+      setContent("");
+      setImage("");
+    } catch (error) {
+      console.error("Error adding blog:", error);
+      alert("❌ Failed to add blog. Check the console.");
+    }
 
-  } catch (error) {
-    console.error("Error writing blog:", error);
-    alert("Failed to add blog!");
-  }
-};
-
+    setLoading(false);
+  };
 
   return (
-    <div className="min-h-screen bg-blue-100 p-6 flex justify-center">
-      <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-        
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-blue-200 p-6 flex justify-center">
+      <div className="w-full max-w-3xl bg-white rounded-2xl shadow-xl p-10 border border-gray-200">
+
         {/* Header */}
-        <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">
+        <h1 className="text-4xl font-bold text-gray-900 text-center mb-2">
           Admin Panel
         </h1>
-        <p className="text-gray-500 text-center mb-8">
-          Create and publish new blog posts easily.
+        <p className="text-gray-500 text-center mb-10">
+          Create and publish new blog posts.
         </p>
 
         {/* Form */}
@@ -50,7 +54,7 @@ function Admin() {
 
           {/* Title */}
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
+            <label className="block text-gray-700 font-medium mb-2">
               Blog Title
             </label>
             <input
@@ -65,38 +69,38 @@ function Admin() {
 
           {/* Summary */}
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
+            <label className="block text-gray-700 font-medium mb-2">
               Summary
             </label>
             <textarea
               className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-              rows="2"
-              placeholder="Short summary that appears on home page..."
+              rows="3"
+              placeholder="Short summary (appears in the list view)..."
               value={summary}
               onChange={(e) => setSummary(e.target.value)}
               required
-            ></textarea>
+            />
           </div>
 
           {/* Content */}
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
+            <label className="block text-gray-700 font-medium mb-2">
               Full Blog Content
             </label>
             <textarea
               className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-              rows="6"
-              placeholder="Write your full blog content here..."
+              rows="8"
+              placeholder="Write the full article here..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
               required
-            ></textarea>
+            />
           </div>
 
           {/* Image URL */}
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Image URL (Optional)
+            <label className="block text-gray-700 font-medium mb-2">
+              Image URL (optional)
             </label>
             <input
               type="text"
@@ -107,15 +111,18 @@ function Admin() {
             />
           </div>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg text-lg font-semibold
-                       hover:bg-blue-700 transition transform hover:scale-105 shadow"
+            disabled={loading}
+            className={`w-full py-3 rounded-lg text-lg font-semibold transition transform shadow 
+              ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 hover:scale-105"}
+            `}
           >
-            Publish Blog
+            {loading ? "Publishing..." : "Publish Blog"}
           </button>
         </form>
+
       </div>
     </div>
   );
