@@ -7,17 +7,31 @@ function Admin() {
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("New Blog:", { title, summary, content, image });
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    alert("Blog successfully added! (Database connection coming next!)");
+  try {
+    await addDoc(collection(db, "posts"), {
+      title,
+      summary,
+      content,
+      image,
+      createdAt: new Date(),
+    });
+
+    alert("Blog added successfully!");
 
     setTitle("");
     setSummary("");
     setContent("");
     setImage("");
-  };
+
+  } catch (error) {
+    console.error("Error writing blog:", error);
+    alert("Failed to add blog!");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-blue-100 p-6 flex justify-center">
