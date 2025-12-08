@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { collection, addDoc, getDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "./firebase"; // adjust path if needed
 import Admin from "./pages/Admin";
+import AdminRoute from "./components/AdminRoute";
 
 function Home() {
   const [text, setText] = useState("");
@@ -313,7 +314,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/about" element={<About />} />
             <Route path="/blog/:id" element={<BlogPost />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin" element={<AdminRoute> <Admin /> </AdminRoute>} />
           </Routes>
         </div>
 
