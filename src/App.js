@@ -14,6 +14,30 @@ function Home() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  // ⭐ Featured Posts
+  const [featuredPosts, setFeaturedPosts] = useState([]);
+
+  // ⭐ Load Featured Posts (latest 2)
+  useEffect(() => {
+    const loadFeatured = async () => {
+      try {
+        const snap = await getDocs(collection(db, "posts"));
+        const posts = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+
+        const sorted = posts
+          .sort((a, b) => b.createdAt?.seconds - a.createdAt?.seconds)
+          .slice(0, 2);
+
+        setFeaturedPosts(sorted);
+      } catch (err) {
+        console.error("Error loading featured posts:", err);
+      }
+    };
+
+    loadFeatured();
+  }, []);
+
+  // ⭐ Subscribe Handler (MUST be inside Home!)
   const handleSubscribe = async (e) => {
     e.preventDefault();
     try {
@@ -21,18 +45,19 @@ function Home() {
       setMessage("🎉 Thanks for subscribing!");
       setEmail("");
     } catch (error) {
-      console.error("Error adding subscriber: ", error);
+      console.error("Error adding subscriber:", error);
       setMessage("❌ Something went wrong. Please try again.");
     }
   };
 
+  // ⭐ Typing effect
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
       setText(fullText.slice(0, i + 1));
       i++;
       if (i === fullText.length) clearInterval(interval);
-    }, 100); // adjust typing speed here
+    }, 100);
     return () => clearInterval(interval);
   }, []);
 
@@ -40,16 +65,16 @@ function Home() {
     <div className="flex flex-col items-center justify-center text-center mt-8 md:mt-8 lg:mt-8 p-10 rounded-lg
                 bg-gradient-to-r from-purple-200 via-pink-200 to-yellow-200 
                 bg-[length:200%_200%] animate-gradient-x">
-      
+
       {/* Typing Effect Heading */}
       <h1 className="text-5xl font-bold text-blue-600 mb-4">{text}</h1>
-      
+
       {/* Subtext */}
       <p className="text-lg text-gray-700 mb-6 max-w-xl">
         Discover tips, tutorials, and stories about latest trends in technology!
       </p>
-      
-      {/* Animated Button */}
+
+      {/* Button */}
       <a
         href="/blog"
         className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition 
@@ -60,40 +85,37 @@ function Home() {
 
       {/* Featured Posts Section */}
       <div className="w-full max-w-5xl">
-      <h2 className="text-3xl font-bold text-gray-800 mb-6 mt-10 text-center">
-        Featured Posts
-      </h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-6 mt-10 text-center">
+          Featured Posts
+        </h2>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {featuredPosts.length === 0 ? (
-          <p className="text-gray-600 text-center w-full">No featured posts yet.</p>
-        ) : (
-          featuredPosts.map((post) => (
-            <div
-              key={post.id}
-              className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1"
-            >
-              <div className="mb-4 border-b pb-2">
-                <h3 className="text-2xl font-bold">
-                  <Link to={`/blog/${post.id}`} className="text-blue-600 hover:underline">
-                    {post.title}
-                  </Link>
-                </h3>
+        <div className="grid md:grid-cols-2 gap-6">
+          {featuredPosts.length === 0 ? (
+            <p className="text-gray-600 text-center w-full">No featured posts yet.</p>
+          ) : (
+            featuredPosts.map((post) => (
+              <div
+                key={post.id}
+                className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition transform hover:-translate-y-1"
+              >
+                <div className="mb-4 border-b pb-2">
+                  <h3 className="text-2xl font-bold">
+                    <Link to={`/blog/${post.id}`} className="text-blue-600 hover:underline">
+                      {post.title}
+                    </Link>
+                  </h3>
+                </div>
+
+                <p className="text-gray-600">{post.summary}</p>
               </div>
-
-              <p className="text-gray-600">{post.summary}</p>
-            </div>
-          ))
-        )}
+            ))
+          )}
+        </div>
       </div>
-    </div>
-
 
       {/* Subscribe Section */}
       <div className="w-full max-w-3xl mt-16 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">
-          Subscribe to Our Newsletter
-        </h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Subscribe to Our Newsletter</h2>
         <p className="text-gray-600 mb-6">
           Get the latest blog posts and tutorials delivered straight to your inbox.
         </p>
@@ -111,6 +133,7 @@ function Home() {
                        focus:ring-2 focus:ring-blue-500"
             required
           />
+
           <button
             type="submit"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 
@@ -122,7 +145,6 @@ function Home() {
 
         {message && <p className="mt-4 text-green-600">{message}</p>}
       </div>
-
     </div>
   );
 }
@@ -131,29 +153,18 @@ function Blog() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-  const loadFeatured = async () => {
-    try {
-      const q = collection(db, "posts");
-      const snapshot = await getDocs(q);
+    const loadPosts = async () => {
+      try {
+        const snap = await getDocs(collection(db, "posts"));
+        const postsList = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        setPosts(postsList);
+      } catch (err) {
+        console.error("Error loading blog posts:", err);
+      }
+    };
 
-      const postsData = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
-      // MOST RECENT 2 POSTS as featured
-      const sorted = postsData
-        .sort((a, b) => b.createdAt?.seconds - a.createdAt?.seconds)
-        .slice(0, 2);
-
-      setFeaturedPosts(sorted);
-    } catch (err) {
-      console.error("Error loading featured posts:", err);
-    }
-  };
-
-  loadFeatured();
-}, []);
+    loadPosts();
+  }, []);
 
   return (
     <div>
